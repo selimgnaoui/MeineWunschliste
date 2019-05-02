@@ -1,4 +1,4 @@
-Readme:
+PROJECT-DOCUMENTATION:
 
 02.05.2019	Eröffnung des Projektes
-03.05.2019	Augabenteilung
+03.05.2019	Augabenaufteilung
