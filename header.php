@@ -1,1 +1,5 @@
-<?php
+<header>
+
+<!-- HEADER INHALT -->
+
+</header>

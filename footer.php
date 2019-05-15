@@ -1,1 +1,5 @@
-<?php
+<footer>
+
+    <!-- INHALT FOOTER -->
+
+</footer>
