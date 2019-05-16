@@ -13,7 +13,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Liste erzeugen</a>
+                    <a class="nav-link" href="#" onclick="switchCreateList();">Liste erzeugen</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Liste suchen</a>
