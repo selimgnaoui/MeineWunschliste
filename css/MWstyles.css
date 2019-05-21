@@ -1,1 +1,13 @@
-/*7,..kj..j,m.k,mbjkl.j*/
+.glyphicon {
+    color: black;
+    width: 40px;
+    height: 40px;
+}
+
+.glyphicon-login {
+    background-image: url(./img/glyphicons/png/glyphicons-387-log-in.png);
+}
+
+.glyphicon-logout {
+    background-image: url(./img/glyphicons/png/glyphicons-388-log-out.png);
+}

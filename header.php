@@ -18,7 +18,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="listeSuchen.php">Liste suchen</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li>
+                <div class="nav-item">
+
+                    <!--WENN NICHT EINGELOGGT-->
+                    <?php if (!isset($_Session['logged'])) { ?>
+                        <a class="nav-link" href="login.php">Login</a>
+                    <?php } ?>
+
+                    <!--WENN EINGELOGGT-->
+                    <?php if (isset($_Session['logged'])) { ?>
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    <?php } ?>
+
+                </div>
+                </li>
+
+                <!--DAS ALTE DROPDOWN MENÜ... ERSETZT DURCH: "WENN EINGELOGGT..." über der Zeile
+                    <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Login
                     </a>
@@ -26,7 +43,7 @@
                         <a class="dropdown-item" href="login.php">Login</a>
                         <a class="dropdown-item" href="registration.php">Register</a>
                     </div>
-                </li>
+                </li>-->
             </ul>
         </div>
         <ul class="nav navbar-nav navbar-right">
@@ -34,12 +51,12 @@
             <li><a href="log-out.php"><?php ?></a></li>
 
             <?php if (!isset($_SESSION['logged'])) { ?>
-                <li><a href="admin-login.php" id="admin-log"><span class="glyphicon glyphicon-user"></span> Sign in</a>
+                <li><a href="login.php" id="admin-log"><span class="glyphicon glyphicon-login"></span> Sign in</a>
                 </li>
             <?php } ?>
 
             <?php if (isset($_SESSION['logged'])) { ?>
-                <li><a href="log-out.php"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+                <li><a href="logout.php"><span class="glyphicon glyphicon-logout"></span> Log out</a></li>
             <?php } ?>
         </ul>
     </nav>

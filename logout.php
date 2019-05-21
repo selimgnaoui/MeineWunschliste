@@ -28,7 +28,7 @@ echo $_SESSION['zeit']; // Nur zum test, ob immer das gleiche rauskommt
 <div id="content">
     <?php
     // Main wird eingebaut
-        include('./ressources/main_login.php');
+        include('./ressources/main_logout.php');
     ?>
 </div>
 
