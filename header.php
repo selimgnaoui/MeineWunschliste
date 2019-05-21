@@ -29,6 +29,19 @@
                 </li>
             </ul>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li><a href="log-out.php"><?php ?></a></li>
+
+            <?php if (!isset($_SESSION['logged'])) { ?>
+                <li><a href="admin-login.php" id="admin-log"><span class="glyphicon glyphicon-user"></span> Sign in</a>
+                </li>
+            <?php } ?>
+
+            <?php if (isset($_SESSION['logged'])) { ?>
+                <li><a href="log-out.php"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+            <?php } ?>
+        </ul>
     </nav>
 
 </header>

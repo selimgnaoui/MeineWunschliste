@@ -1,6 +1,7 @@
 <?php
     // Session wird gestartet
     session_start();
+    echo $_SESSION['zeit']; // Nur zum test, ob immer das gleiche rauskommt
 ?>
 
 <!doctype html>

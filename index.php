@@ -1,6 +1,10 @@
 <?php
     // Session wird gestartet
     session_start();
+
+    echo 'Seite 1';
+    $_SESSION['zeit'] = time();
+    echo $_SESSION['zeit'];
 ?>
 
 <!doctype html>
