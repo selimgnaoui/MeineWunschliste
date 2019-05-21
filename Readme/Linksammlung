@@ -14,3 +14,12 @@ https://www.sitepoint.com/community/t/use-a-href-link-and-onclick-function-toget
 OPTISCHES:
 https://coolors.co/818479-b5cbb7-d2e4c4-e4e9b2-e7e08b
 https://mycolor.space/?hex=%2300F9FF&sub=1
+
+
+
+
+CODE SNIPPETS:
+ <?php
+    // Main wird eingebaut
+        include('./ressources/main_liste_erzeugen_loggedIn.php');
+    ?>

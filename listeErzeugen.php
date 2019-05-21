@@ -26,10 +26,13 @@
 ?>
 
 <div id="content">
-    <?php
-    // Main wird eingebaut
-        include('./ressources/main_liste_erzeugen_loggedIn.php');
-    ?>
+
+    <!--WENN NICHT EINGELOGGT-->
+    <?php if (!isset($_Session['logged'])) { include('./ressources/main_liste_erzeugen_loggedOut.php');} ?>
+
+    <!--WENN EINGELOGGT-->
+    <?php if (!isset($_Session['logged'])) { include('./ressources/main_liste_erzeugen_loggedIn.php');} ?>
+
 </div>
 
 
