@@ -16,6 +16,10 @@ https://coolors.co/818479-b5cbb7-d2e4c4-e4e9b2-e7e08b
 https://mycolor.space/?hex=%2300F9FF&sub=1
 
 
+XAMPP Alias für htdoc (mac):
+cd /Applications/XAMPP/htdocs
+ln -s /Data/MyApp/App Aliasname
+
 
 
 CODE SNIPPETS:
