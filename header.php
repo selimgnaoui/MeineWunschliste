@@ -18,21 +18,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="listeSuchen.php">Liste suchen</a>
                 </li>
-                <li>
-                <div class="nav-item">
-
-                    <!--WENN NICHT EINGELOGGT-->
-                    <?php if (!isset($_Session['logged'])) { ?>
-                        <a class="nav-link" href="login.php">Login</a>
-                    <?php } ?>
-
-                    <!--WENN EINGELOGGT-->
-                    <?php if (isset($_Session['logged'])) { ?>
-                        <a class="nav-link" href="logout.php">Logout</a>
-                    <?php } ?>
-
-                </div>
-                </li>
 
                 <!--DAS ALTE DROPDOWN MENÜ... ERSETZT DURCH: "WENN EINGELOGGT..." über der Zeile
                     <li class="nav-item dropdown">
@@ -48,15 +33,15 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
 
-            <li><a href="log-out.php"><?php ?></a></li>
+            <!--WENN NICHT EINGELOGGT-->
+            <?php if (!isset($_Session['logged'])) { ?>
+                <a class="nav-link" href="login.php">Login</a>
 
-            <?php if (!isset($_SESSION['logged'])) { ?>
-                <li><a href="login.php" id="admin-log"><span class="glyphicon glyphicon-login"></span> Sign in</a>
-                </li>
             <?php } ?>
 
-            <?php if (isset($_SESSION['logged'])) { ?>
-                <li><a href="logout.php"><span class="glyphicon glyphicon-logout"></span> Log out</a></li>
+            <!--WENN EINGELOGGT-->
+            <?php if (isset($_Session['logged'])) { ?>
+                <a href="logout.php">Log out</a>
             <?php } ?>
         </ul>
     </nav>

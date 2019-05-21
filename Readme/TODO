@@ -18,10 +18,15 @@ Datenbanksuche
 
 
 AUFGABEN:
+
 André:
 Datenbanköffnung
 Datensuche
 Datenerstellung
+
+KOMMENTARE:
+    !!!WICHTIG!!!   Ist man eingeloggt, kommt man bei der Hauptseite automatisch auf main_liste_suchen_loggedIn,
+                    ansonsten in die main.php
 
 
 Matthias:
