@@ -27,7 +27,7 @@
 <div id="content">
     <?php
     // Main wird eingebaut
-        include('main_start_login.php');
+        include('./ressources/main_start_login.php');
     ?>
 </div>
 

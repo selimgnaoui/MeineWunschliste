@@ -27,7 +27,7 @@
 <div id="content">
     <?php
     // Main wird eingebaut
-        include('main_listeErzeugen.php');
+        include('./ressources/main_liste_erzeugen.php');
     ?>
 </div>
 

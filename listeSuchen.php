@@ -27,7 +27,7 @@
 <div id="content">
     <?php
     // Main wird eingebaut
-        include('main_listeSuchen.php');
+        include('./ressources/main_liste_suchen.php');
     ?>
 </div>
 

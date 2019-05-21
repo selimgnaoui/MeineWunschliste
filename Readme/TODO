@@ -1,0 +1,35 @@
+Benötigte Seiten zur Gestaltung:
+
+main				    Nicht eingeloggt, Startpunkt bei Seitenbesuch
+main_login		        login-Seite
+main_logged_in		    Main-„Zentrale“ nach einloggen
+main_logged_out	        Main für nach ausloggen
+
+Eingeloggte Seiten:
+main_liste_erzeugen		Listenerzeugungsformulare
+main_liste_suchen		Listensuche und Event-/Wunschabfrage
+
+Technisch:
+
+Login
+Datenbanköffnung
+Datenbankschreiben
+Datenbanksuche
+
+
+AUFGABEN:
+André:
+Datenbanköffnung
+Datensuche
+Datenerstellung
+
+
+Matthias:
+Aufbau der Mains:
+    Standartstart unloggedin
+    main_liste_erzeugen
+    main_liste_suchen
+
+    Login
+    loggedin
+    loggedout

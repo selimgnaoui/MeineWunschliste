@@ -27,7 +27,7 @@
 <div id="content">
     <?php
     // Main wird eingebaut
-        include('main.php');
+        include('./ressources/main.php');
     ?>
 </div>
 
