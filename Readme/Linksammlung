@@ -19,6 +19,7 @@ https://mycolor.space/?hex=%2300F9FF&sub=1
 XAMPP Alias für htdoc (mac):
 cd /Applications/XAMPP/htdocs
 ln -s /Data/MyApp/App Aliasname
+ln -s /wo liegt das Objekt/ Aliasname
 
 
 

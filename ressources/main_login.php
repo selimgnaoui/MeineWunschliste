@@ -6,7 +6,7 @@
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">Login</h1>
-                        <form>
+                        <form method="POST" action="../login.php" onsubmit="return pruefung();">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -17,7 +17,7 @@
                                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" value="bestätigen">Submit</button>
                         </form>
                     </div>
                 </div>
