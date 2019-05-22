@@ -6,8 +6,11 @@ function pruefung() {
     var pruefung = "ok";
     alert('PRÜFUNG DER LOGINDATEN');
     if (pruefung == "ok") {
+
         alert('DATEN SIND OK');
-        return true;
+        return false;
+        // Session auf logged setzen und userid hinterlegen
+
     } else {
         alert('DATEN SIND FALSCH');
         return false;

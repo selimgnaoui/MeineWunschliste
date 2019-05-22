@@ -1,3 +1,7 @@
+<?php
+ include('./db/dbLoginConnect.php');
+?>
+
 <main>
     <br>
     <div class="container">
@@ -9,12 +13,12 @@
                         <form method="POST" action="../login.php" onsubmit="return pruefung();">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Bitte E-Mail-Adresse eingeben...">
                                 <small id="emailHelp" class="form-text text-muted">Bitte benutzen Sie die Email-Adresse, mit der Sie sich registriert haben!</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input type="password" class="form-control" id="Passwort" placeholder="Passwort">
                             </div>
 
                             <button type="submit" class="btn btn-primary" value="bestätigen">Submit</button>
