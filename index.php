@@ -36,7 +36,7 @@
     <?php if (!isset($_Session['logged'])) { include('./ressources/main.php');} ?>
 
     <!--WENN EINGELOGGT-->
-    <?php if (!isset($_Session['logged'])) { include('./ressources/main_liste_suchen_loggedIn.php');} ?>
+    <?php if (isset($_Session['logged'])) { include('./ressources/main_liste_suchen_loggedIn.php');} ?>
 
 
 </div>
