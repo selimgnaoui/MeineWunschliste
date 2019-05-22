@@ -21,6 +21,9 @@ cd /Applications/XAMPP/htdocs
 ln -s /Data/MyApp/App Aliasname
 ln -s /wo liegt das Objekt/ Aliasname
 
+ln -s /Users/andreschume/Documents/GitHub/MeineWunschliste MeineWunschliste
+
+
 
 
 CODE SNIPPETS:
