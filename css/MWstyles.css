@@ -11,3 +11,67 @@
 .glyphicon-logout {
     background-image: url(./img/glyphicons/png/glyphicons-388-log-out.png);
 }
+
+/* Style the form - display items horizontally
+.wishlist {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+*/
+.form-horizontal {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid;
+}
+
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+}
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+}
+
+body
+{
+    margin-top: 50px;
+}
+a:hover { text-decoration:none; }
+.btn
+{
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+}
+.btn-read-more
+{
+    padding: 5px;
+    text-align: center;
+    border-radius: 0px;
+    display: inline-block;
+    border: 2px solid #662D91;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    color:#662D91;
+}
+
+.btn-read-more:hover
+{
+    color: #FFF;
+    background: #662D91;
+}
+.post { border-bottom:1px solid #DDD }
+.post-title {  color:#662D91; }
+.post .glyphicon { margin-right:5px; }
+.post-header-line { border-top:1px solid #DDD;border-bottom:1px solid #DDD;padding:5px 0px 5px 15px;font-size: 12px; }
+.post-content { padding-bottom: 15px;padding-top: 15px;}

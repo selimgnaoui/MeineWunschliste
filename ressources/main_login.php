@@ -10,18 +10,18 @@
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">Login</h1>
-                        <form method="POST" action="../login.php" onsubmit="return pruefung();">
+                        <form method="POST" action="../classes/login.php" onsubmit="return pruefung();">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Bitte E-Mail-Adresse eingeben...">
+                                <input name="username" required type="text" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Bitte Username eingeben...">
                                 <small id="emailHelp" class="form-text text-muted">Bitte benutzen Sie die Email-Adresse, mit der Sie sich registriert haben!</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="Passwort" placeholder="Passwort">
+                                <input type="password" class="form-control" id="Passwort" name="password" placeholder="Passwort" required>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" value="bestätigen">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="submit" value="bestätigen">Submit</button>
                         </form>
                     </div>
                 </div>

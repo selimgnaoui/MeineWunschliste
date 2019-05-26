@@ -25,12 +25,7 @@
     include('header.php');
 ?>
 
-<div id="content">
-    <!--WENN NICHT EINGELOGGT-->
-    <?php if (!isset($_Session['logged'])) { include('./ressources/main_liste_suchen_loggedOut.php');} ?>
-
-    <!--WENN EINGELOGGT-->
-    <?php if (isset($_Session['logged'])) { include('./ressources/main_liste_suchen_loggedIn.php');} ?>
+<div class="container">
 
 </div>
 

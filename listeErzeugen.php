@@ -1,7 +1,9 @@
 <?php
     // Session wird gestartet
     session_start();
-    echo $_SESSION['zeit']; // Nur zum test, ob immer das gleiche rauskommt
+   if (!isset($_SESSION["user_id"]) ){
+       header("location:../index.php");
+   }
 ?>
 
 <!doctype html>
@@ -24,14 +26,63 @@
     // Header wird eingebaut
     include('header.php');
 ?>
+<br><br><br>
+<div class="container">
 
-<div id="content">
+    <form class="form-horizontal" action="classes/saveEventsToDatabase.php" method="post">
+        <fieldset>
 
-    <!--WENN NICHT EINGELOGGT-->
-    <?php if (!isset($_Session['logged'])) { include('./ressources/main_liste_erzeugen_loggedOut.php');} ?>
+            <!-- Form Name -->
+            <legend>Veranstaltung Hinzüfügen</legend>
 
-    <!--WENN EINGELOGGT-->
-    <?php if (isset($_Session['logged'])) { include('./ressources/main_liste_erzeugen_loggedIn.php');} ?>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Name</label>
+                <div class="col-md-4">
+                    <input id="name" name="event_name" type="text" placeholder="Veranstaltung" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="position">Date</label>
+                <div class="col-md-4">
+                    <input id="position" name="event_date" type="date" placeholder="position" class="form-control input-md required">
+
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-md-4 control-label" for="position">Event List</label>
+                <table>
+                    <thead>
+                    <tr><th></th><th></th></tr>
+                    </thead>
+                  <tbody class="wishlist">
+                  <tr>
+                      <td>
+                          <input type="text" name="items[]" class="form-control" required/>
+
+                      </td>
+                      <td>
+
+                      </td>
+                  </tr>
+
+                  </tbody>
+
+                </table>
+
+
+
+            </div>
+
+            <button type="button"  id="addrow" class="btn btn-primary btn-xs">
+               </span> + <br></bt>
+            </button>
+        </fieldset><br><br>
+        <input type="submit" class="btn btn-md btn-success" name="saveevents" value="Veranstaltung speichern" />
+    </form>
 
 </div>
 
