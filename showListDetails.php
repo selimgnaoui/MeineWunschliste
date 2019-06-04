@@ -8,7 +8,9 @@
 
    $event_id=$_GET["event_id"];
 
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $sql = 'SELECT wishlist.*, u.vorname as user_name, u.id as user_id, e.id as event_id, e.Datum as event_datum, e.name as event_name from wishlist
  LEFT join events e on e.id=wishlist.events  LEFT join users u on u.id=e.user_id  
@@ -16,8 +18,13 @@ $sql = 'SELECT wishlist.*, u.vorname as user_name, u.id as user_id, e.id as even
 
 $result = $conn->query($sql);
 $result2 = $conn->query($sql);
-
-$invitation_text='Hallo, Ich lade Sie herzlich zu '.$result->fetch_assoc()["event_name"].' , die findent am '.$result->fetch_assoc()["event_datum"].' statt. Anbei ist der Link zu meinen WünschListe 
+while($row = $result->fetch_assoc()) {
+    $event_name=$row["event_name"];
+    $event_datum=$row["event_datum"];
+    $event_user_name=$row["user_name"];
+    $event_id=$row["event_id"];
+}
+$invitation_text='Hallo, Ich lade Sie herzlich zu '.$event_name.' , die findent am '.$event_datum.' statt. Anbei ist der Link zu meinen WünschListe 
 
 '.$_SERVER['SERVER_NAME'].'/showListDetails.php?event_id='.$event_id.'';
 ?>
@@ -52,30 +59,67 @@ $invitation_text='Hallo, Ich lade Sie herzlich zu '.$result->fetch_assoc()["even
                     <div class="row">
                         <div class="col-md-12">
                             <h4>
-                                <strong><a  class="post-title"><?php echo $result->fetch_assoc()["event_name"]; ?></a></strong></h4>
+                                <strong><a  class="post-title"><?php echo $event_name; ?></a></strong></h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 post-header-line">
-                            <span class="glyphicon glyphicon-user"></span>by <a href="#"><?php echo $result2->fetch_assoc()["user_name"]; ?></a> | <span class="glyphicon glyphicon-calendar">
-                            </span><?php echo $result2->fetch_assoc()["event_datum"]; ?>
+                            <span class="glyphicon glyphicon-user"></span>by <a href="#"><?php echo $event_user_name ;?></a> | <span class="glyphicon glyphicon-calendar">
+                            </span><?php echo $event_datum; ?>
                         </div>
                     </div>
                     <div class="row post-content">
 
-                      <ul>
+                      <table class="table table-striped custab">
+                          <thead>
+                          <th>
+                              Wünsche
+                          </th>
+                          <th>
+                              Geblieben Anzahl
+                          </th>
+                          <th>
+                              Anbieter
+                          </th>
+                          <th>
+                              Preis
+                          </th>
+                          <th>
+                              Ort
+                          </th>
+                          <th>
+                              Action
+                          </th>
+                          </thead><tbody>
                      <?php
-                     if ($result->num_rows > 0) {
+                     if ($result2->num_rows > 0) {
                      // output data of each row
                      while($row = $result2->fetch_assoc()) {
-                    echo '<li>'.$row['name'].'</li>';
+                    echo '<tr>
+<td>'.$row['name'].'</td>
+<td>'.$row['anzahl'].'</td>
+<td>'.$row['anbieter'].'</td>
+<td>'.$row['preis'].'</td>
+<td>'.$row['ort'].'</td>';
+
+echo '<td>';
+
+ if ($row['anzahl'] > 0 && isset($_SESSION["user_id"])){
+
+     echo '<button id="showubernahmemodel" wish-anzahl="'.$row['anzahl'].'" event-id="'.$event_id.'" data-wish="'.$row['id'].'" data-toggle="modal" class="btn btn-info btn-xs showmodal" data-target="#squarespaceModal"><span class="glyphicon glyphicon-edit"></span> Teil  Übernehmen</button>';
+ }
+
+    echo '  <a data-toggle="modal" class="btn btn-info btn-xs showListDetails" data-target="#modal_wish_details" wish-id="'.$row['id'].'">Details</a>';
+
+                         echo '</td>';
+echo '</tr>';
                      }
                      }
 
                      ?>
 
-
-                      </ul>
+                          </tbody>
+                      </table>
                         <div class="col-md-9">
                             <p>
 
@@ -86,7 +130,7 @@ $invitation_text='Hallo, Ich lade Sie herzlich zu '.$result->fetch_assoc()["even
                     </div>
                 </div>
             </div></div>
-<div class="">
+<div class="container">
     <div class="form-area">
         <form role="form" action="classes/sendMail.php" method="POST">
             <br style="clear:both">
@@ -123,13 +167,86 @@ $invitation_text='Hallo, Ich lade Sie herzlich zu '.$result->fetch_assoc()["even
     // Footer wird eingebaut
     include('footer.php');
 ?>
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 
+            </div>
+            <div class="modal-body">
+
+                <!-- content goes here -->
+                <form action="classes/saveWishTakerAmount.php" method="POST">
+                    <div class="form-group">
+                        <span id="maximumamountSpan"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount </label>
+                        <input  type="number" name="wish_amount" class="form-control" id="wish_amount" placeholder="Anzahl übernehmen">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Kommentar</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="wish_comment" placeholder="Kommentar">
+                    </div>
+                    <input type="text" hidden aria-hidden="true"  class="form-control" name="wish_id" id="wish_id" >
+                    <input type="text" hidden aria-hidden="true"  class="form-control" name="event_id" id="event_id" >
+                    <input type="text" hidden aria-hidden="true"  class="form-control" name="anzahl" id="anzahl" >
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Schliessen</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="submit" id="savewish" name="savewish" class="btn btn-default btn-hover-green"  role="button">Übernehmen</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="modal_wish_details" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+
+            </div>
+            <div class="modal-body">
+
+                <!-- content goes here -->
+                <div a>
+                    <div class="post-content" id="wish_list_history">
+
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Schliessen</button>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Optional JavaScript -->
 <script type="application/javascript" src="js/startup.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

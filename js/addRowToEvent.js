@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-    var counter = 0;
-
+    var counter = 1;
 
 
 
@@ -13,12 +12,32 @@ $(document).ready(function () {
 
     $("#addrow").on("click", function () {
 
+
         var newRow = $("<tr>");
         var cols = "";
 
-        cols +=  '<td><input type="text" name="items[]" class="form-control" required /></td>';
+        cols +=  '<td>\n' +
+            '                         Name <input type="text" name="wish['+counter+'][name]" class="form-control" required/>\n' +
+            '\n' +
+            '                      </td>\n' +
+            '                      <td>\n' +
+            '                      Anzahl    <input type="number" name="wish['+counter+'][amount]" class="form-control" required/>\n' +
+            '\n' +
+            '                      </td>\n' +
+            '                      <td>\n' +
+            '                       Anbieter   <input type="text" name="wish['+counter+'][anbieter]" class="form-control" required/>\n' +
+            '\n' +
+            '                      </td>\n' +
+            '                      <td>\n' +
+            '                          Ort   <input type="text" name="wish['+counter+'][ort]" class="form-control" required/>\n' +
+            '\n' +
+            '                      </td>\n' +
+            '                      <td>\n' +
+            '                          Preis   <input type="text" name="wish['+counter+'][preis]" class="form-control" required/>\n' +
+            '\n' +
+            '                      </td>';
         cols += '  <td>\n' +
-            '        <input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete">\n' +
+            '       Aktion <input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete">\n' +
             '        </td>';
         cols += '</tr>'
 
@@ -44,10 +63,3 @@ function calculateRow(row) {
 
 }
 
-function calculateGrandTotal() {
-    var grandTotal = 0;
-    $("table.order-list").find('input[name^="price"]').each(function () {
-        grandTotal += +$(this).val();
-    });
-    $("#grandtotal").text(grandTotal.toFixed(2));
-}

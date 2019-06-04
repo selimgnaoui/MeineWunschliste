@@ -16,8 +16,9 @@ VALUES ('".$event_name."', '".$event_date."', '".$_SESSION["user_id"]."')";
    $conn->query($sql);
    $id =  mysqli_insert_id($conn);
 
+
     if ($id) {
-        saveWishListItems($_POST["items"],$id,$conn);
+        saveWishListItems($_POST["wish"],$id,$conn);
         header("location:../meinlisten.php?user_id=".$_SESSION["user_id"]);
     } else {
         echo "Veranstaltung wurde nicht hinzegefügt : hier isr der  Grund <br>";
@@ -27,9 +28,10 @@ VALUES ('".$event_name."', '".$event_date."', '".$_SESSION["user_id"]."')";
 
 function saveWishListItems($items,$event_id,$conn){
     foreach ($items as $item){
+         var_dump($item);
+        $sql= "INSERT INTO `wishlist` (`id`, `name`, `events`, `anbieter`, `ort`, `anzahl`, `total_taken`, `preis`) VALUES (NULL, '".$item["name"]."', ".$event_id.", '".$item["anbieter"]."', '".$item["ort"]."', '".$item["amount"]."', '0', '".$item["preis"]."');";
 
-        $sql = "INSERT INTO wishlist (name, events)
-VALUES ('".$item."', '".$event_id."')";
+
         $conn->query($sql);
        echo $conn->error;
     }

@@ -1,7 +1,9 @@
 
 <?php
-session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
 <?php
@@ -21,7 +23,7 @@ require ('includes.php');
                 <li class="nav-item active">
                     <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <?php if ($_SESSION["user_id"])
+                <?php if (isset($_SESSION["user_id"]) )
                 {
 
                   echo ' <li class="nav-item">
@@ -58,7 +60,7 @@ require ('includes.php');
             </ul>
         </div>
         <ul class="nav navbar-nav navbar-right">
-
+            <a class="nav-link" href="register.php">Registrieren</a>
             <!--WENN NICHT EINGELOGGT-->
             <?php if (!isset($_SESSION['user_id'])) { ?>
                 <a class="nav-link" href="login.php">Login</a>

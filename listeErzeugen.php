@@ -56,17 +56,31 @@
                 <label class="col-md-4 control-label" for="position">Event List</label>
                 <table>
                     <thead>
-                    <tr><th></th><th></th></tr>
+                    <tr><th></th><th></th><th></th><th></th><th></th><th></th></tr>
                     </thead>
                   <tbody class="wishlist">
                   <tr>
                       <td>
-                          <input type="text" name="items[]" class="form-control" required/>
+                         Name <input type="text" name="wish[0][name]" class="form-control" required/>
 
                       </td>
                       <td>
+                      Anzahl    <input type="number" name="wish[0][amount]" class="form-control" required/>
 
                       </td>
+                      <td>
+                       Anbieter   <input type="text" name="wish[0][anbieter]" class="form-control" required/>
+
+                      </td>
+                      <td>
+                          Ort   <input type="text" name="wish[0][ort]" class="form-control" required/>
+
+                      </td>
+                      <td>
+                          Preis   <input type="text" name="wish[0][preis]" class="form-control" required/>
+
+                      </td>
+                      <td></td>
                   </tr>
 
                   </tbody>
